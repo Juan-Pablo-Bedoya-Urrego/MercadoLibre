@@ -1,12 +1,16 @@
 import React from 'react';
-import {View,Text,FlatList} from 'react-native';
+import {View,Text} from 'react-native';
 import Profile from './src/components/Profile';
+import HelpAndSupport from './src/components/HelpAndSupport';
+
+
 
 const App = ()=>{
     return(
-        <view>
-            <text> Aplicacion</text>
-        </view>
+        <View >
+            <Profile />
+            <HelpAndSupport />
+        </View>
 
     );
 };
