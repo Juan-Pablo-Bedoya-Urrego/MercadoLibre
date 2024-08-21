@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const loginStyles = StyleSheet.create({
+const registerStyles = StyleSheet.create({
     label: {
         alignSelf: 'flex-start',
         fontSize: 16,
@@ -20,12 +20,12 @@ const loginStyles = StyleSheet.create({
     placeholder:{
         color: 'black'
     },
-    passwordContainer: {
+    inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 16,
     },
-    loginButton: {
+    registerButton: {
         backgroundColor: '#00B8EB',
         paddingVertical: 12,
         paddingHorizontal: 32,
@@ -34,7 +34,7 @@ const loginStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 16,
     },
-    loginButtonText: {
+    registerButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',
@@ -52,6 +52,19 @@ const loginStyles = StyleSheet.create({
         color: '#00B8EB',
         marginLeft: 4,
     },
+    pickerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+    },
+    pickerWrapper: {
+        flex: 1,
+        marginHorizontal: 1.5,
+    },
+    picker: {
+        color: '#000', 
+        backgroundColor: '#dde3e8', 
+    },
 });
 
-export default loginStyles;
+export default registerStyles;
