@@ -9,6 +9,9 @@ const HomeScreen = ({ navigation }) => {
             <Button
                 title="Iniciar Sesion"
                 onPress={() => navigation.navigate('Login')} />
+                <Button
+                title="Pago"
+                onPress={() => navigation.navigate('branchPayment')} />
         </View>
     );
 };

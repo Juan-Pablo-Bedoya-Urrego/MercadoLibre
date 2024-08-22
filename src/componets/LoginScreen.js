@@ -54,8 +54,8 @@ const LoginScreen = ({ navigation }) => {
                 />
             </View>
 
-            <Pressable style={loginStyles.loginButton} onPress={handleLogin}>
-                <Text style={loginStyles.loginButtonText}>Iniciar sesión</Text>
+            <Pressable style={globalStyles.principalButon} onPress={handleLogin}>
+                <Text style={globalStyles.principalButtonText}>Iniciar sesión</Text>
             </Pressable>
 
             <View style={loginStyles.footer}>

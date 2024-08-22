@@ -25,20 +25,6 @@ const loginStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 16,
     },
-    loginButton: {
-        backgroundColor: '#00B8EB',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 5,
-        width: '100%',
-        alignItems: 'center',
-        marginBottom: 16,
-    },
-    loginButtonText: {
-        color: '#FFFFFF',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
     footer: {
         flexDirection: 'row',
         marginTop: 16,
