@@ -1,22 +1,22 @@
 import { StyleSheet } from 'react-native'
 
 const cardProductsStyles = StyleSheet.create({
-    globalContainer:{
+    globalContainer: {
         padding: 15,
         justifyContent: 'center',
         paddingTop: 25
     },
-    containerCard:{
+    containerCard: {
         flexDirection: 'row',
         marginBottom: 15,
         padding: 5,
         backgroundColor: "#91BDF0",
         borderRadius: 7
     },
-    imgProduct:{
+    imgProduct: {
         width: 100,
         height: 100,
-    }, 
+    },
     containerText: {
         flex: 1,
         marginLeft: 10,
@@ -27,48 +27,61 @@ const cardProductsStyles = StyleSheet.create({
         marginBottom: 8,
         color: 'black',
     },
-    labelPrincipal:{
-        alignSelf: 'flex-start',
+    labelMain: {
+        textAlign: 'center',
         fontSize: 30,
         marginTop: 20,
         color: '#000',
-        paddingLeft: 50,
         paddingBottom: 50
     },
-    labelPrincipalData:{
-        alignSelf: 'flex-start',
-        fontSize: 20,
-        marginTop: 20,
-        color: '#000',
-        paddingLeft: 75
-    },
     labelTotal: {
-        alignSelf: 'flex-start',
-        fontSize: 15,
+        textAlign: 'center',
+        fontSize: 17,
         marginBottom: 8,
         color: 'black',
-        marginRight: 50
+        paddingTop: 200,
+    },
+    labelTotalValue:{
+        color: '#2B4BFC'
     },
     rowContainer: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     inputAmount: {
-        borderWidth: 1,
         padding: 5,
-        marginLeft: 10,
-        width: 35,
-        height: 25 ,
-        color :'#000'
+        width: 50,
+        height: 30,
+        color: '#000',
+        textAlign: 'center',
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: '#ccc',
     },
-    input: {
+    button: {
+        backgroundColor: '#007BFF',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+    },
+    quantityContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
         borderWidth: 1,
-        padding: 5,
-        color: '#000'
+        borderColor: '#ccc', 
+        borderRadius: 5, 
     },
-    picker: {
-        color: '#000', 
-        backgroundColor: '#dde3e8', 
+    clearButton: {
+        backgroundColor: '#ff4d4d', 
+        padding: 8,                 
+        borderRadius: 5,            
+        alignItems: 'center',       
+        justifyContent: 'center',   
+        marginLeft: 70,             
+    },
+    icon: {
+        width: 20,
+        height: 20,
+        tintColor: '#FFF',          
     },
 });
 

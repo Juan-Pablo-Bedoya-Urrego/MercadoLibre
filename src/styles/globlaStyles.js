@@ -18,7 +18,7 @@ const globalStyles = StyleSheet.create({
     placeholder:{
         color: 'black'
     },
-    principalButon: {
+    mainButon: {
         backgroundColor: '#00B8EB',
         marginTop: 25,
         paddingVertical: 12,
@@ -28,7 +28,7 @@ const globalStyles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 16,
     },
-    principalButtonText: {
+    mainButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',

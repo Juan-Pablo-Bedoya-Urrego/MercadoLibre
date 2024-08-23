@@ -13,7 +13,7 @@ const registerStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#CCCCCC',
         borderRadius: 5,
-        marginBottom: 16,
+        marginBottom: 5,
         backgroundColor: '#fff',
         color: 'black',
     },
@@ -41,7 +41,6 @@ const registerStyles = StyleSheet.create({
     pickerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 15,
     },
     pickerWrapper: {
         flex: 1,

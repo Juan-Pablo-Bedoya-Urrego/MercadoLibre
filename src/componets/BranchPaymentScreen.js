@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Alert, Pressable, Image, FlatList } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import globalStyles from "../styles/globlaStyles";
-import cardProductsStyles from "../styles/cardProductsStyles";
-import productOne from "../img/tecladoMouse.jpg"
-import productTwo from "../img/kz.webp"
+import BranchPaymentStyles from "../styles/BranchPaymentStyles";
+import productOne from "../img/tecladoMouse.jpg";
+import productTwo from "../img/kz.webp";
 
 const BranchPaymentScreen = ({ navigation }) => {
     const [products, setProducts] = useState([
@@ -19,13 +19,13 @@ const BranchPaymentScreen = ({ navigation }) => {
         }, 0);
     };
     const renderDescriptionProduct = (item) => (
-        <View style={cardProductsStyles.containerText}>
-            <Text style={cardProductsStyles.label}>Descripcion: {item.description}</Text>
-            <Text style={cardProductsStyles.label}>Valor: ${item.valueProduct}</Text>
-            <View style={cardProductsStyles.rowContainer}>
-                <Text style={cardProductsStyles.label}>Cantidad: </Text>
+        <View style={BranchPaymentStyles.containerText}>
+            <Text style={BranchPaymentStyles.label}>Descripcion: {item.description}</Text>
+            <Text style={BranchPaymentStyles.label}>Valor: ${item.valueProduct}</Text>
+            <View style={BranchPaymentStyles.rowContainer}>
+                <Text style={BranchPaymentStyles.label}>Cantidad: </Text>
                 <TextInput
-                    style={cardProductsStyles.inputAmount}
+                    style={BranchPaymentStyles.inputAmount}
                     placeholder="Cantidad"
                     keyboardType="numeric"
                     maxLength={2}
@@ -36,8 +36,8 @@ const BranchPaymentScreen = ({ navigation }) => {
         </View>
     );
     const renderProducts = ({ item }) => (
-        <View style={cardProductsStyles.containerCard}>
-            <Image source={item.image} style={cardProductsStyles.imgProduct} resizeMode="contain"/>
+        <View style={BranchPaymentStyles.containerCard}>
+            <Image source={item.image} style={BranchPaymentStyles.imgProduct} resizeMode="contain"/>
             {renderDescriptionProduct(item)}
         </View>
     );
@@ -47,36 +47,36 @@ const BranchPaymentScreen = ({ navigation }) => {
         ));
     };
     return (
-        <View style={cardProductsStyles.globalContainer}>
-            <Text style={cardProductsStyles.labelPrincipal}>Sucursal de Pago</Text>
+        <View style={BranchPaymentStyles.globalContainer}>
+            <Text style={BranchPaymentStyles.labelMain}>Sucursal de Pago</Text>
             <FlatList
                 data={products}
                 renderItem={renderProducts}
                 keyExtractor={item => item.id}
             />
-            <Text style={cardProductsStyles.labelTotal}>Valor Total: ${calculateTotalValue()}</Text>
-            <Text style={cardProductsStyles.labelPrincipalData}>DATOS DE ENTREGA</Text>
-            <Text style={cardProductsStyles.labelTotal}>Dirección:</Text>
+            <Text style={BranchPaymentStyles.labelTotal}>Valor Total: ${calculateTotalValue()}</Text>
+            <Text style={BranchPaymentStyles.labelMainData}>DATOS DE ENTREGA</Text>
+            <Text style={BranchPaymentStyles.labelTotal}>Dirección:</Text>
             <TextInput
                 placeholder="Dirección de entrega"
                 placeholderTextColor={globalStyles.placeholder.color}
                 value={addressDelivery}
                 onChangeText={setAddressDelivery}
                 maxLength={30}
-                style={cardProductsStyles.input}
+                style={BranchPaymentStyles.input}
             />
-            <Text style={cardProductsStyles.label}>Forma de pago:</Text>
+            <Text style={BranchPaymentStyles.label}>Forma de pago:</Text>
             <Picker
                 selectedValue={formPayment}
                 onValueChange={(itemValue) => setFormPayment(itemValue)}
-                style={cardProductsStyles.picker}
+                style={BranchPaymentStyles.picker}
             >
                 <Picker.Item label="PSE" value="PSE" />
                 <Picker.Item label="Tarjeta de crédito" value="Tarjeta de crédito" />
                 <Picker.Item label="Efecty" value="Efecty" />
             </Picker>
-            <Pressable style={globalStyles.principalButon} onPress={() => Alert.alert('Exito', 'Pago realizado con exito')}>
-                <Text style={globalStyles.principalButtonText}>Pagar</Text>
+            <Pressable style={globalStyles.mainButon} onPress={() => Alert.alert('Exito', 'Pago realizado con exito')}>
+                <Text style={globalStyles.mainButtonText}>Pagar</Text>
             </Pressable>
         </View>
     );

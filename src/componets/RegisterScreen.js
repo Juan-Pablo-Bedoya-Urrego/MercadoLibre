@@ -157,8 +157,8 @@ const RegisterScreen = ({ navigation }) => {
                     style={registerStyles.input}
                     placeholder="Ingrese su correo"
                     placeholderTextColor={registerStyles.placeholder.color}
-                    value={address}
-                    onChangeText={text => setAddress(text)}
+                    value={email}
+                    onChangeText={text => setEmail(text)}
                 />
             </View>
 
@@ -168,6 +168,17 @@ const RegisterScreen = ({ navigation }) => {
             </Pressable>
 
             <Text style={registerStyles.label}>Fecha seleccionada: {dateBirth.toLocaleDateString()}</Text>
+
+            <Text style={registerStyles.label}>Direccion</Text>
+            <View style={registerStyles.inputContainer}>
+                <TextInput
+                    style={registerStyles.input}
+                    placeholder="Ingrese su direccion"
+                    placeholderTextColor={registerStyles.placeholder.color}
+                    value={address}
+                    onChangeText={text => setAddress(text)}
+                />
+            </View>
 
             <DatePicker
                 modal
