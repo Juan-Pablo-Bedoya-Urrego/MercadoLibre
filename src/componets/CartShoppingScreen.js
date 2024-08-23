@@ -85,8 +85,8 @@ const CartShoppingScreen = ({ navigation }) => {
                 keyExtractor={item => item.id}
             />
             <Text style={cardProductsStyles.labelTotal}>Valor Total: <Text style={cardProductsStyles.labelTotalValue}>${calculateTotalValue()}</Text></Text>
-            <Pressable style={globalStyles.principalButon} onPress={() => navigation.navigate('branchPayment')}>
-                <Text style={globalStyles.principalButtonText}>Pagar</Text>
+            <Pressable style={globalStyles.mainButon} onPress={() => navigation.navigate('branchPayment')}>
+                <Text style={globalStyles.mainButtonText}>Pagar</Text>
             </Pressable>
         </View>
     );

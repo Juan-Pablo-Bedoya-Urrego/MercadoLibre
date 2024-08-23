@@ -196,8 +196,8 @@ const RegisterScreen = ({ navigation }) => {
 
             {renderPickers()}
 
-            <Pressable style={globalStyles.principalButon} onPress={handleRegister}>
-                <Text style={globalStyles.principalButtonText}>Registrarse</Text>
+            <Pressable style={globalStyles.mainButon} onPress={handleRegister}>
+                <Text style={globalStyles.mainButtonText}>Registrarse</Text>
             </Pressable>
         </View>
     );
