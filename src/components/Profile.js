@@ -1,23 +1,19 @@
 import React from "react";
-import { View, Text, ImageView } from "react-native";
-import globalStyles from "../styles/globalStyles";
+import { View, Text, Image, Button } from "react-native";
 import profileStyles from "../styles/profileStyles";
 
 const Profile = () => {
-    const name = 'Rocio';
-    const lastName = 'Lopez Cordoba';
-    const birthdate = '13/11/2006';
-    const profileImage = require("../image/usuario.avif");
-
     return (
-        <View style={globalStyles.container}>
-            <Text style={globalStyles.text}>Perfil</Text>
-            <ImageView style={profileStyles.profileImage} source={profileImage}> </ImageView>  
-            <Text style={profileStyles.label}>{name}</Text>
-            <Text style={profileStyles.label}>{lastName}</Text>
-            <Text style={profileStyles.label}>{birthdate}</Text>
+        <View style={profileStyles.container}>
+            <Text style={profileStyles.firstTitle}>Perfil de Usuario</Text>
+            <Text>______________________________________________</Text>
+
+            <Text style={profileStyles.text}>Bienvenido a su perfil</Text>
+            <Text style={profileStyles.title}>Mariangel</Text>
+            <Text style={profileStyles.title}>Cartagena Laverde</Text>
+            <Text style={profileStyles.title}>29/05/2002</Text>
         </View>
     );
-}
+};
 
 export default Profile;

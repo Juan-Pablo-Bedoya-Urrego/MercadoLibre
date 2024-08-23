@@ -9,19 +9,21 @@ const helpAndSoportStyles = StyleSheet.create({
     padding:20,
   },
   title: {
-    fontSize: 35,
+    fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 20,
+    color:'black'
   },
   label: {
-    fontSize: 16,
+    fontSize: 27,
     fontWeight: '500',
-    marginBottom: 10,
+    marginBottom: 15,
+    color:'black'
   },
   requestTypeContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 25,
   },
   requestTypeButton: {
     flex: 1,
