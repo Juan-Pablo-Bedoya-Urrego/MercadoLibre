@@ -1,10 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-const offersStyles = StyleSheet.create({
+const myFavoriteStyles = StyleSheet.create({
     container: {
         flex: 1,
-        display:'flex',
-        position:'absolute',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
@@ -31,9 +29,10 @@ const offersStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#00b8eb',
     },
-    itemLetters: {
+    itemStatus: {
         fontSize: 18,
         color: '#black',
+        flexShrink: 1,
         marginBottom: 16,
     },
     itemDescription: {
@@ -42,4 +41,4 @@ const offersStyles = StyleSheet.create({
         flexShrink: 1,
     },
 });
-export default offersStyles;
+export default myFavoriteStyles;
