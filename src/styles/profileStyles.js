@@ -8,43 +8,31 @@ const profileStyles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   firstTitle: {
+    paddingHorizontal:'auto',
     fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color:'black'
+    marginBottom: 10,
+    color:'#00b8eb',
   },
   imageContainer: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 20,
+    width: 150,
+    height: 200,
+    borderRadius: 60,
+    marginBottom: 30,
   },
   text: {
+    alignItems:'center',
     fontSize: 27,
     fontWeight: 'bold',
     marginBottom: 20,
-    color:'#00b8eb'
-  },
+    color:'#black'
+  }, 
   title: {
     fontSize: 24,
     color: 'black',
     marginBottom: 20,
   },
-  buttonContainer: {
-    marginTop: 20,
-    width: '80%',
-    alignItems: 'center',
-    color:'#00b8eb'
-  },
-  iconButton: {
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: '#6200EE',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 50,
-  },
+
 });
 
 export default profileStyles;

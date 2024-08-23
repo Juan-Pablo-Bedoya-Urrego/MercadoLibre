@@ -41,12 +41,14 @@ const helpAndSoportStyles = StyleSheet.create({
     fontWeight: '500',
   },
   textInput: {
+    height: 100, 
     borderWidth: 1,
     borderColor: '#d0d0d0',
     borderRadius: 5,
     padding: 10,
     marginBottom: 20,
     backgroundColor: '#ffffff',
+    textAlignVertical: 'top',
   },
   submitButton: {
     backgroundColor: '#00b8eb',

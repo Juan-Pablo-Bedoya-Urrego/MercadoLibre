@@ -6,7 +6,6 @@ const HelpAndSupport = () => {
   const [requestType, setRequestType] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
-  const [inputHeight, setInputHeight] = useState(100); // Altura inicial
 
   const handleDescriptionChange = (text) => {
     if (text.length <= 300) {
@@ -15,10 +14,6 @@ const HelpAndSupport = () => {
     } else {
       setError('La descripción no puede exceder los 300 caracteres.');
     }
-  };
-
-  const handleContentSizeChange = (contentWidth, contentHeight) => {
-    setInputHeight(contentHeight);
   };
 
   const handleSubmit = () => {
@@ -31,7 +26,6 @@ const HelpAndSupport = () => {
 
     setRequestType('');
     setDescription('');
-    setInputHeight(100); 
   };
 
   return (
@@ -63,13 +57,12 @@ const HelpAndSupport = () => {
 
       <Text style={helpAndSoportStyles.label}>Descripción de la solicitud:</Text>
       <TextInput
-        style={[helpAndSoportStyles.textInput, { height: inputHeight }]}
+        style={helpAndSoportStyles.textInput}
         multiline
         numberOfLines={4}
         value={description}
         onChangeText={handleDescriptionChange}
-        onContentSizeChange={handleContentSizeChange}
-        placeholder="Escribe tu problema aquí..."
+        placeholder="                Escribe tu problema aquí...                "
       />
       {error ? <Text style={helpAndSoportStyles.errorText}>{error}</Text> : null}
 
