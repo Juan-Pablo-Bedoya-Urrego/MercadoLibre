@@ -54,9 +54,9 @@ const BranchPaymentScreen = ({ navigation }) => {
                 renderItem={renderProducts}
                 keyExtractor={item => item.id}
             />
-            <Text style={BranchPaymentStyles.labelTotal}>Valor Total: ${calculateTotalValue()}</Text>
+            <Text style={BranchPaymentStyles.labelTotal}>Valor Total: <Text style={BranchPaymentStyles.labelTotalValue}>${calculateTotalValue()}</Text></Text>
             <Text style={BranchPaymentStyles.labelMainData}>DATOS DE ENTREGA</Text>
-            <Text style={BranchPaymentStyles.labelTotal}>Dirección:</Text>
+            <Text style={BranchPaymentStyles.label}>Dirección:</Text>
             <TextInput
                 placeholder="Dirección de entrega"
                 placeholderTextColor={globalStyles.placeholder.color}

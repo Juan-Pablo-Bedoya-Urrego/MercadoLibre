@@ -29,26 +29,27 @@ const BranchPaymentStyles = StyleSheet.create({
         color: 'black',
     },
     labelMain:{
-        alignSelf: 'flex-start',
+        alignSelf: 'center',
         fontSize: 30,
         marginTop: 20,
         color: '#000',
-        paddingLeft: 50,
         paddingBottom: 50
     },
     labelMainData:{
-        alignSelf: 'flex-start',
+        alignSelf: 'center',
         fontSize: 20,
         marginTop: 20,
         color: '#000',
-        paddingLeft: 75
     },
     labelTotal: {
-        alignSelf: 'flex-start',
+        alignSelf: 'flex-end',
         fontSize: 15,
         marginBottom: 8,
         color: 'black',
         marginRight: 50
+    },
+    labelTotalValue: {
+        color: '#2B4BFC'
     },
     rowContainer: {
         flexDirection: 'row',
