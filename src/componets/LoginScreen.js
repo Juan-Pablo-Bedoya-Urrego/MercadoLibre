@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable, CheckBox, Alert } from 'react-native';
+import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import globalStyles from "../styles/globlaStyles";
 import loginStyles from '../styles/loginStyles';
 
@@ -42,7 +42,7 @@ const LoginScreen = ({ navigation }) => {
                 onChangeText={text => setUser(text)}
             />
 
-            <Text style={loginStyles.label}>Conntraseña</Text>
+            <Text style={loginStyles.label}>Contraseña</Text>
             <View style={loginStyles.passwordContainer}>
                 <TextInput
                     style={loginStyles.input}
@@ -54,13 +54,13 @@ const LoginScreen = ({ navigation }) => {
                 />
             </View>
 
-            <Pressable style={loginStyles.loginButton} onPress={handleLogin}>
-                <Text style={loginStyles.loginButtonText}>Iniciar sesión</Text>
+            <Pressable style={globalStyles.mainButon} onPress={handleLogin}>
+                <Text style={globalStyles.mainButtonText}>Iniciar sesión</Text>
             </Pressable>
 
             <View style={loginStyles.footer}>
                 <Text style={loginStyles.footerText}>No tienes cuenta? </Text>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate('Register')}>
                     <Text style={loginStyles.footerLink}>Registrarse</Text>
                 </Pressable>
             </View>

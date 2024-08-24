@@ -15,6 +15,24 @@ const globalStyles = StyleSheet.create({
         marginBottom: 8,
         color: '#000000',
     },
+    placeholder:{
+        color: 'black'
+    },
+    mainButon: {
+        backgroundColor: '#00B8EB',
+        marginTop: 25,
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 5,
+        width: '100%',
+        alignItems: 'center',
+        marginBottom: 16,
+    },
+    mainButtonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
 
 export default globalStyles;
