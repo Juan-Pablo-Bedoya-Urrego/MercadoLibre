@@ -30,8 +30,8 @@ const Offers = () => {
                 renderItem={({ item }) => (
                 <View style={offersStyles.itemContainer}>
                       
-                    <Image style={offersStyles.itemImage} source={item.image} />
                     <Text style={offersStyles.itemText}>{item.title}</Text>
+                    <Image style={offersStyles.itemImage} source={item.image} />
                     <Text style={offersStyles.itemDescription} numberOfLines={2} ellipsizeMode='tail'>{item.description}</Text>
                     <Text style={offersStyles.itemLetters}>Valor Original: {item.worth}</Text>
                     <Text style={offersStyles.itemLetters}>Descuento: {item.discount}</Text>

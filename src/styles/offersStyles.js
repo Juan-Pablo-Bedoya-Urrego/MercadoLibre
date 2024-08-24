@@ -3,13 +3,12 @@ import { StyleSheet } from 'react-native';
 const offersStyles = StyleSheet.create({
     container: {
         flex: 1,
-        display:'flex',
-        position:'absolute',
-        alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
+        overflow:'scroll',
     },
     firstTitle: {
+        alignItems:'center',
         paddingHorizontal: 'auto',
         fontSize: 40,
         fontWeight: 'bold',

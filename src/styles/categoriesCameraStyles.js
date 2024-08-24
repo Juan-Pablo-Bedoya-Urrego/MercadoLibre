@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const myPurchasesStyles = StyleSheet.create({
+const categoriesCameraStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
@@ -30,15 +30,13 @@ const myPurchasesStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#00b8eb',
     },
-    itemStatus: {
-        fontSize: 18,
-        color: '#black',
-        marginBottom: 16,
-    },
+
     itemDescription: {
         fontSize: 18,
+        height:60,
         color: '#black',
         flexShrink: 1,
+        paddingBottom:'20'
     },
 });
-export default myPurchasesStyles;
+export default categoriesCameraStyles;
