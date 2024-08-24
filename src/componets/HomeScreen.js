@@ -112,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
     );
 
     const handleProductPress = (product) => {
-        navigation.navigate('ProductDetail', {product});
+        navigation.navigate('ProductDetail', { product });
     };
 
     const renderProduct = ({ item }) => (
@@ -146,6 +146,12 @@ const HomeScreen = ({ navigation }) => {
                     source={require('../img/acceso.png')}
                     style={HomeStyles.icon}
                 />
+            </Pressable>
+            <Pressable style={HomeStyles.iconButton} onPress={() => navigation.navigate('Items')}>
+                <Text>Categorias</Text>
+            </Pressable>
+            <Pressable style={HomeStyles.iconButton} onPress={() => navigation.navigate('Profile')}>
+                <Text>Perfil</Text>
             </Pressable>
         </View>
     );
