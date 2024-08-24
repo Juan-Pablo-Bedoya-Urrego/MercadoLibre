@@ -21,7 +21,7 @@ const HelpAndSupport = () => {
       setError('La descripción no puede exceder los 300 caracteres.');
       return;
     }
-    
+
     Alert.alert('Solicitud Enviada', 'Gracias por tu mensaje. Pronto daremos respuesta');
 
     setRequestType('');

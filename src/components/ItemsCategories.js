@@ -5,16 +5,47 @@ import CategoriesMovils from '../components/CategoriesMovils';
 import CategoriesLaptop from '../components/CategoriesLaptop';
 import CategoriesHeadphones from '../components/CategoriesHeadphones';
 import CategoriesCamera from '../components/CategoriesCamera';
-import categoriesCameraStyles from '../styles/categoriesCameraStyles';
+import itemsCategoriesStyles from '../styles/itemsCategoriesStyles';
+
 
 const ItemsCategories = ({ navigation }) => {
     return (
-        <View style={categoriesCameraStyles.container}>
-            <Button style={categoriesCameraStyles.itemText} title="Television" onPress={() => navigation.navigate('CategoriesTelevision')} />
-            <Button style={categoriesCameraStyles.itemText} title="Telefonos Moviles" onPress={() => navigation.navigate('CategoriesMovils')} />
-            <Button style={categoriesCameraStyles.itemText} title="Computadores" onPress={() => navigation.navigate('CategoriesLaptop')} />
-            <Button style={categoriesCameraStyles.itemText} title="Auriculares" onPress={() => navigation.navigate('CategoriesHeadphones')} />
-            <Button style={categoriesCameraStyles.itemText} title="Camaras" onPress={() => navigation.navigate('CategoriesCamera')} />
+        <View style={itemsCategoriesStyles.container}>
+            <View style={itemsCategoriesStyles.buttonContainer}>
+                <Button
+                    color={itemsCategoriesStyles.button.backgroundColor}
+                    title="Television"
+                    onPress={() => navigation.navigate('CategoriesTelevision')}
+                />
+            </View>
+            <View style={itemsCategoriesStyles.buttonContainer}>
+                <Button
+                    color={itemsCategoriesStyles.button.backgroundColor}
+                    title="Telefonos Moviles"
+                    onPress={() => navigation.navigate('CategoriesMovils')}
+                />
+            </View>
+            <View style={itemsCategoriesStyles.buttonContainer}>
+                <Button
+                    color={itemsCategoriesStyles.button.backgroundColor}
+                    title="Computadores"
+                    onPress={() => navigation.navigate('CategoriesLaptop')}
+                />
+            </View>
+            <View style={itemsCategoriesStyles.buttonContainer}>
+                <Button
+                    color={itemsCategoriesStyles.button.backgroundColor}
+                    title="Auriculares"
+                    onPress={() => navigation.navigate('CategoriesHeadphones')}
+                />
+            </View>
+            <View style={itemsCategoriesStyles.buttonContainer}>
+                <Button
+                    color={itemsCategoriesStyles.button.backgroundColor}
+                    title="Camaras"
+                    onPress={() => navigation.navigate('CategoriesCamera')}
+                />
+            </View>
         </View>
     );
 };

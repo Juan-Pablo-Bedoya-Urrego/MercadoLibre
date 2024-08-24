@@ -7,11 +7,11 @@ const CategoriesCamera = () => {
 
     const camera = () => {
         const cameraList = [
-            { id: '1', title: 'Sony Alpha A7 III',description:'Cámara sin espejo con sensor full-frame de 24.2 MP, grabación de video 4K.', image:require('../image/SonyAlphaA7III.jpg')},
-            { id: '2', title: 'Nikon Z9',description:'Una cámara sin espejo de formato completo.', image:require('../image/NikonZ9.jpg')},
-            { id: '2', title: 'Canon EOS R5:',description:'Es una cámara sin espejo de alto rendimiento.',image:require('../image/Camara.jpg')},
-            { id: '4', title: 'Fujifilm X-H2S',description:'Una cámara sin espejo con un sensor APS-C de 26.1 MP.', image:require('../image/FujifilmX-H2S.jpg')},
-            { id: '5', title: 'Leica SL2',description:'Una cámara sin espejo de formato completo con un sensor de 47.3 MP .', image:require('../image/LeicaSL2.jpg')},
+            { id: '1', title: 'Sony Alpha A7 III', description: 'Cámara sin espejo con sensor full-frame de 24.2 MP, grabación de video 4K.', image: require('../image/SonyAlphaA7III.jpg') },
+            { id: '2', title: 'Nikon Z9', description: 'Una cámara sin espejo de formato completo.', image: require('../image/NikonZ9.jpg') },
+            { id: '2', title: 'Canon EOS R5:', description: 'Es una cámara sin espejo de alto rendimiento.', image: require('../image/Camara.jpg') },
+            { id: '4', title: 'Fujifilm X-H2S', description: 'Una cámara sin espejo con un sensor APS-C de 26.1 MP.', image: require('../image/FujifilmX-H2S.jpg') },
+            { id: '5', title: 'Leica SL2', description: 'Una cámara sin espejo de formato completo con un sensor de 47.3 MP .', image: require('../image/LeicaSL2.jpg') },
 
         ];
         setProductList(cameraList);
