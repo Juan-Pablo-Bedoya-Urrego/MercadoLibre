@@ -11,13 +11,8 @@ import ProfileScreen from './src/componets/ProfileScreen';
 import OffersScreen from './src/componets/OffersScreen';
 import MyPurchasesScreen from './src/componets/MyPurchasesScreen';
 import MyFavoritesScreen from './src/componets/MyFavoritesScreen';
-import ItemsCategoriesScreen from './src/componets/ItemsCategoriesScreen';
 import HelpAndSupportScreen from './src/componets/HelpAndSupportScreen';
-import CategoriesTelevisionScreen from './src/componets/CategoriesTelevisionScreen';
-import CategoriesMovilsScreen from './src/componets/CategoriesMovilsScreen';
-import CategoriesCameraScreen from './src/componets/CategoriesCameraScreen';
-import CategoriesHeadphonesScreen from './src/componets/CategoriesHeadphonesScreen';
-import CategoriesLaptopScreen from './src/componets/CategoriesLaptopScreen';
+import CategoryScreen from './src/componets/CategoryScreen';
 
 const Stack = createStackNavigator();
 
@@ -35,13 +30,8 @@ const App = () => {
         <Stack.Screen name='offers' component={OffersScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='purchases' component={MyPurchasesScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='favorite' component={MyFavoritesScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='Items' component={ItemsCategoriesScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='Support' component={HelpAndSupportScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='CategoriesTelevisionScreen' component={CategoriesTelevisionScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='CategoriesMovils' component={CategoriesMovilsScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='CategoriesLaptop' component={CategoriesLaptopScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='CategoriesHeadphones' component={CategoriesHeadphonesScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='CategoriesCamera' component={CategoriesCameraScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name='Category' component={CategoryScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

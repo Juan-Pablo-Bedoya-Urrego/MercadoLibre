@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const HomeStyles = StyleSheet.create({
+const categoryStyles = StyleSheet.create({
     containerMain: {
         flex: 1,
         backgroundColor: '#00B8EB',
@@ -24,11 +24,6 @@ const HomeStyles = StyleSheet.create({
         padding: 10,
         marginRight: 10,
     },
-    cartButton: {
-        padding: 10,
-        backgroundColor: 'lightgray',
-        borderRadius: 4,
-    },
     iconButton: {
         padding: 10,
         borderRadius: 4,
@@ -41,14 +36,6 @@ const HomeStyles = StyleSheet.create({
         marginTop: 10,
         padding: 10,
         backgroundColor: '#fff',
-    },
-    scrollContainer: {
-        paddingVertical: 25
-    },
-    buttonRowContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 10,
     },
     productContainer: {
         flexDirection: 'row',
@@ -99,8 +86,8 @@ const HomeStyles = StyleSheet.create({
     pressable: {
         padding: 10,
         borderRadius: 4,
-        marginHorizontal: 5, 
-        borderWidth: 1, 
+        marginHorizontal: 5, // Espaciado entre los botones
+        borderWidth: 1, // Ancho del borde
         borderColor: '#fff',
         width: 100,
         height: 45
@@ -112,4 +99,4 @@ const HomeStyles = StyleSheet.create({
     },
 });
 
-export default HomeStyles;
+export default categoryStyles;

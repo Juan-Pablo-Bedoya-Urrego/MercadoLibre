@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Alert, Pressable } from 'react-native';
 import helpAndSoportStyles from '../styles/helpAndSoportStyles';
+import globalStyles from '../styles/globlaStyles';
 
 const HelpAndSupportScreen = () => {
     const [requestType, setRequestType] = useState('');
@@ -30,45 +31,47 @@ const HelpAndSupportScreen = () => {
 
     return (
         <View style={helpAndSoportStyles.container}>
-            <Text style={helpAndSoportStyles.title}>Ayuda y Soporte</Text>
-            <Text>____________________________________________________</Text>
+            <View style={helpAndSoportStyles.content}>
+                <Text style={helpAndSoportStyles.title}>Ayuda y Soporte</Text>
+                <View style={helpAndSoportStyles.separator} />
 
-            <Text style={helpAndSoportStyles.label}>Solicitud a enviar:</Text>
-            <View style={helpAndSoportStyles.requestTypeContainer}>
-                <Pressable
-                    style={[helpAndSoportStyles.requestTypeButton, requestType === 'Queja' && helpAndSoportStyles.selectedButton]}
-                    onPress={() => setRequestType('Queja')}
-                >
-                    <Text style={helpAndSoportStyles.buttonText}>Queja</Text>
-                </Pressable>
-                <Pressable
-                    style={[helpAndSoportStyles.requestTypeButton, requestType === 'Peticion' && helpAndSoportStyles.selectedButton]}
-                    onPress={() => setRequestType('Peticion')}
-                >
-                    <Text style={helpAndSoportStyles.buttonText}>Peticion</Text>
-                </Pressable>
-                <Pressable
-                    style={[helpAndSoportStyles.requestTypeButton, requestType === 'Recurso' && helpAndSoportStyles.selectedButton]}
-                    onPress={() => setRequestType('Recurso')}
-                >
-                    <Text style={helpAndSoportStyles.buttonText}>Recurso</Text>
+                <Text style={helpAndSoportStyles.label}>Solicitud a enviar:</Text>
+                <View style={helpAndSoportStyles.requestTypeContainer}>
+                    <Pressable
+                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Queja' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => setRequestType('Queja')}
+                    >
+                        <Text style={helpAndSoportStyles.buttonText}>Queja</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Peticion' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => setRequestType('Peticion')}
+                    >
+                        <Text style={helpAndSoportStyles.buttonText}>Petición</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Recurso' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => setRequestType('Recurso')}
+                    >
+                        <Text style={helpAndSoportStyles.buttonText}>Recurso</Text>
+                    </Pressable>
+                </View>
+
+                <Text style={helpAndSoportStyles.label}>Descripción de la solicitud:</Text>
+                <TextInput
+                    style={helpAndSoportStyles.textInput}
+                    multiline
+                    numberOfLines={4}
+                    value={description}
+                    onChangeText={handleDescriptionChange}
+                    placeholder="Escribe tu problema aquí..."
+                />
+                {error ? <Text style={helpAndSoportStyles.errorText}>{error}</Text> : null}
+
+                <Pressable style={helpAndSoportStyles.submitButton} onPress={handleSubmit}>
+                    <Text style={helpAndSoportStyles.submitButtonText}>Enviar</Text>
                 </Pressable>
             </View>
-
-            <Text style={helpAndSoportStyles.label}>Descripción de la solicitud:</Text>
-            <TextInput
-                style={helpAndSoportStyles.textInput}
-                multiline
-                numberOfLines={4}
-                value={description}
-                onChangeText={handleDescriptionChange}
-                placeholder="                Escribe tu problema aquí...                "
-            />
-            {error ? <Text style={helpAndSoportStyles.errorText}>{error}</Text> : null}
-
-            <Pressable style={helpAndSoportStyles.submitButton} onPress={handleSubmit}>
-                <Text style={helpAndSoportStyles.submitButtonText}>Enviar</Text>
-            </Pressable>
         </View>
     );
 };
