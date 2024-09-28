@@ -23,7 +23,7 @@ const CategoriesLaptop = () => {
 
     return (
         <View style={categoriesLaptopStyles.container}>
-            <Text style={categoriesLaptopStyles.firstTitle}>Télefonos Moviles</Text>
+            <Text style={categoriesLaptopStyles.firstTitle}>Computadores Portatiles</Text>
             <FlatList
                 data={productList}
                 keyExtractor={(item) => item.id}
