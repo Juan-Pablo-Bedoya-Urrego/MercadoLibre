@@ -1,66 +1,94 @@
 import { StyleSheet } from 'react-native';
 
 const helpAndSoportStyles = StyleSheet.create({
-  container: {
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-    backgroundColor:'white',
-    padding:20,
-  },
-  title: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color:'black'
-  },
-  label: {
-    fontSize: 27,
-    fontWeight: '500',
-    marginBottom: 15,
-    color:'black'
-  },
-  requestTypeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 25,
-  },
-  requestTypeButton: {
-    flex: 1,
-    marginHorizontal: 5,
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: '#00b8eb',
-    alignItems: 'center',
-  },
-  selectedButton: {
-    backgroundColor: '#6200ee',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontWeight: '500',
-  },
-  textInput: {
-    height: 100, 
-    borderWidth: 1,
-    borderColor: '#d0d0d0',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 20,
-    backgroundColor: '#ffffff',
-    textAlignVertical: 'top',
-  },
-  submitButton: {
-    backgroundColor: '#00b8eb',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  submitButtonText: {
-    color: '#ffffff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#F7F9FC',
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    content: {
+        width: '100%',
+        maxWidth: 600, 
+        padding: 20,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 5, 
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 15,
+    },
+    separator: {
+        height: 1,
+        backgroundColor: '#E1E8EB',
+        marginVertical: 10,
+    },
+    label: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: 'black',
+        marginBottom: 8,
+    },
+    requestTypeContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+    },
+    requestTypeButton: {
+        flex: 1,
+        marginHorizontal: 5,
+        paddingVertical: 10,
+        borderRadius: 8,
+        backgroundColor: '#00B8EB',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: '#007BFF',
+    },
+    selectedButton: {
+        backgroundColor: '#0056b3',
+        borderColor: '#0056b3',
+    },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#FFF',
+    },
+    textInput: {
+        backgroundColor: 'black',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        borderRadius: 8,
+        padding: 10,
+        marginBottom: 15,
+        fontSize: 16,
+        textAlignVertical: 'top',
+    },
+    errorText: {
+        color: '#D9534F',
+        fontSize: 14,
+        marginBottom: 15,
+    },
+    submitButton: {
+        backgroundColor: '#28A745',
+        paddingVertical: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    submitButtonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFF',
+    },
 });
 
 export default helpAndSoportStyles;

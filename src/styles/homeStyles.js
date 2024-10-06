@@ -1,19 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-const myFavoriteStyles = StyleSheet.create({
-    container: {
+const HomeStyles = StyleSheet.create({
+    containerMain: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    firstTitle: {
-        alignItems: 'center',
-        paddingHorizontal: 'auto',
-        fontSize: 40,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        color: '#00b8eb',
+        backgroundColor: '#00B8EB',
     },
     header: {
         padding: 10,
@@ -109,8 +99,8 @@ const myFavoriteStyles = StyleSheet.create({
     pressable: {
         padding: 10,
         borderRadius: 4,
-        marginHorizontal: 5,
-        borderWidth: 1,
+        marginHorizontal: 5, 
+        borderWidth: 1, 
         borderColor: '#fff',
         width: 100,
         height: 45
@@ -121,4 +111,5 @@ const myFavoriteStyles = StyleSheet.create({
         textAlign: 'center',
     },
 });
-export default myFavoriteStyles;
+
+export default HomeStyles;

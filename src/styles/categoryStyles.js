@@ -1,19 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-const myFavoriteStyles = StyleSheet.create({
-    container: {
+const categoryStyles = StyleSheet.create({
+    containerMain: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    firstTitle: {
-        alignItems: 'center',
-        paddingHorizontal: 'auto',
-        fontSize: 40,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        color: '#00b8eb',
+        backgroundColor: '#00B8EB',
     },
     header: {
         padding: 10,
@@ -34,11 +24,6 @@ const myFavoriteStyles = StyleSheet.create({
         padding: 10,
         marginRight: 10,
     },
-    cartButton: {
-        padding: 10,
-        backgroundColor: 'lightgray',
-        borderRadius: 4,
-    },
     iconButton: {
         padding: 10,
         borderRadius: 4,
@@ -51,14 +36,6 @@ const myFavoriteStyles = StyleSheet.create({
         marginTop: 10,
         padding: 10,
         backgroundColor: '#fff',
-    },
-    scrollContainer: {
-        paddingVertical: 25
-    },
-    buttonRowContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 10,
     },
     productContainer: {
         flexDirection: 'row',
@@ -109,8 +86,8 @@ const myFavoriteStyles = StyleSheet.create({
     pressable: {
         padding: 10,
         borderRadius: 4,
-        marginHorizontal: 5,
-        borderWidth: 1,
+        marginHorizontal: 5, // Espaciado entre los botones
+        borderWidth: 1, // Ancho del borde
         borderColor: '#fff',
         width: 100,
         height: 45
@@ -121,4 +98,5 @@ const myFavoriteStyles = StyleSheet.create({
         textAlign: 'center',
     },
 });
-export default myFavoriteStyles;
+
+export default categoryStyles;
