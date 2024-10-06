@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { View, Text, TextInput, Alert, Pressable, Image, FlatList } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 import globalStyles from "../styles/globlaStyles";
 import cardProductsStyles from "../styles/cardProductsStyles";
 import { useAppContext } from "../Context/context";
-
-
 
 const CartShoppingScreen = ({ navigation }) => {
 

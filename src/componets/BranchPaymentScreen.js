@@ -14,7 +14,6 @@ const BranchPaymentScreen = ({ navigation }) => {
     const [formPayment, setFormPayment] = useState('PSE');
     const [totalValue, setTotalValue] = useState(0);
 
-
     
     useEffect(() => {
         const total = products.reduce((total, product) => {
