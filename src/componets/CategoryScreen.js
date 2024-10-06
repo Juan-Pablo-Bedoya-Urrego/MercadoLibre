@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { View, Text, FlatList, Image, TextInput, Pressable } from 'react-native';
 import categoryStyles from '../styles/categoryStyles';
-
+import { useAppContext } from '../Context/context';
 
 const CategoryScreen = ({ route, navigation }) => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const { products = [] } = route.params || {}; 
+    const { products = [] } = route.params || {};
+    const {state,dispatch}=useAppContext();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const filtered = products.filter(product =>
+            product.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+        );
+        dispatch({ type: 'SET_FILTERED_PRODUCTS', payload: filtered });
+        setLoading(false);
+    }, [state.searchQuery, products]);
 
     const handleProductPress = (product) => {
         navigation.navigate('ProductDetail', { product });
     };
-
-    console.log('Products:', products);
-
-    const filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
 
     const renderHeader = () => (
         <View style={categoryStyles.header}>
@@ -23,8 +26,8 @@ const CategoryScreen = ({ route, navigation }) => {
                 <TextInput
                     style={categoryStyles.searchInput}
                     placeholder="Buscar productos..."
-                    value={searchQuery}
-                    onChangeText={(text) => setSearchQuery(text)}
+                    value={state.searchQuery}
+                    onChangeText={(text) => dispatch({ type: 'SET_SEARCH_QUERY', payload: text })}
                 />
                 <Pressable style={categoryStyles.iconButton} onPress={() => navigation.navigate('CartShopping')}>
                     <Image
@@ -47,6 +50,7 @@ const CategoryScreen = ({ route, navigation }) => {
             </Pressable>
         </View>
     );
+
     const renderProduct = ({ item }) => (
         <Pressable style={categoryStyles.productContainer} onPress={() => handleProductPress(item)}>
             <Image source={item.image} style={categoryStyles.productImage} resizeMode="contain" />
@@ -58,12 +62,20 @@ const CategoryScreen = ({ route, navigation }) => {
         </Pressable>
     );
 
+    if (loading) {
+        return (
+            <View style={categoryStyles.containerMain}>
+                <Text>Cargando productos...</Text>
+            </View>
+        );
+    }
+
     return (
         <View style={categoryStyles.containerMain}>
             {renderHeader()}
             <View style={categoryStyles.container}>
                 <FlatList
-                    data={filteredProducts}
+                    data={state.filteredProducts}
                     renderItem={renderProduct}
                     keyExtractor={item => item.id}
                     style={categoryStyles.flatListContent}

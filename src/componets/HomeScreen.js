@@ -311,6 +311,7 @@ const HomeScreen = ({ navigation }) => {
             characteristics: 'Alto rendimiento',
             paymentMethods: 'N/A',
             discount: 'N/A',
+            
             totalValue: 'N/A'
         },
         {

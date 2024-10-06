@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import globalStyles from "../styles/globlaStyles";
 import loginStyles from '../styles/loginStyles';
+import { useAppContext } from '../Context/context';
+
 
 const LoginScreen = ({ navigation }) => {
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
+    const {state, dispatch} = useAppContext();
+
+    useEffect(() => {
+        dispatch({ type: 'SET_USER', payload: '' });
+        dispatch({ type: 'SET_PASSWORD', payload: '' });
+    }, []);
 
     const validateUser = (user) => {
         return user.length <= 10;
@@ -17,17 +23,18 @@ const LoginScreen = ({ navigation }) => {
     };
 
     const handleLogin = () => {
-        if (!validateUser(user)) {
+        if (!validateUser(state.user)) {
             Alert.alert('Error', 'El usuario debe tener como máximo 10 caracteres');
             return;
         }
 
-        if (!validatePassword(password)) {
+        if (!validatePassword(state.password)) {
             Alert.alert('Error', 'La contraseña debe tener como máximo 8 caracteres e incluir al menos una letra mayúscula, un carácter especial, letras y números');
             return;
         }
-        Alert.alert('Inicio con exito', `Bienvenido, ${user}!`);
-        navigation.navigate('Home')
+        
+        Alert.alert('Inicio con éxito', `Bienvenido, ${state.user}!`);
+        navigation.navigate('Home');
     };
 
     return (
@@ -38,8 +45,8 @@ const LoginScreen = ({ navigation }) => {
                 style={loginStyles.input}
                 placeholder="Ingrese su usuario"
                 placeholderTextColor={loginStyles.placeholder.color}
-                value={user}
-                onChangeText={text => setUser(text)}
+                value={state.user}
+                onChangeText={text => dispatch({ type: 'SET_USER', payload: text })}
             />
 
             <Text style={loginStyles.label}>Contraseña</Text>
@@ -48,8 +55,8 @@ const LoginScreen = ({ navigation }) => {
                     style={loginStyles.input}
                     placeholder="Ingrese su contraseña"
                     placeholderTextColor={loginStyles.placeholder.color}
-                    value={password}
-                    onChangeText={text => setPassword(text)}
+                    value={state.password}
+                    onChangeText={text => dispatch({ type: 'SET_PASSWORD', payload: text })}
                     secureTextEntry
                 />
             </View>

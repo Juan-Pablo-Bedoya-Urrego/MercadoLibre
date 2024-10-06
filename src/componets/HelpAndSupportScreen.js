@@ -1,32 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import { View, Text, TextInput, Alert, Pressable } from 'react-native';
 import helpAndSoportStyles from '../styles/helpAndSoportStyles';
-import globalStyles from '../styles/globlaStyles';
+import { useAppContext } from '../Context/context';
 
 const HelpAndSupportScreen = () => {
-    const [requestType, setRequestType] = useState('');
-    const [description, setDescription] = useState('');
-    const [error, setError] = useState('');
+    const { state, dispatch } = useAppContext();
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    useEffect(() => {
+        if (isSubmitted) {
+            Alert.alert('Solicitud Enviada', 'Gracias por tu mensaje. Pronto daremos respuesta');
+            setIsSubmitted(false);
+        }
+    }, [isSubmitted]);
 
     const handleDescriptionChange = (text) => {
         if (text.length <= 300) {
-            setDescription(text);
-            setError('');
+            dispatch({ type: 'SET_DESCRIPTION', payload: text });
         } else {
-            setError('La descripción no puede exceder los 300 caracteres.');
+            dispatch({ type: 'SET_ERROR', payload: 'La descripción no puede exceder los 300 caracteres.' });
         }
     };
 
     const handleSubmit = () => {
-        if (description.length > 300) {
-            setError('La descripción no puede exceder los 300 caracteres.');
+        if (state.description.length > 300) {
+            dispatch({ type: 'SET_ERROR', payload: 'La descripción no puede exceder los 300 caracteres.' });
             return;
         }
 
-        Alert.alert('Solicitud Enviada', 'Gracias por tu mensaje. Pronto daremos respuesta');
-
-        setRequestType('');
-        setDescription('');
+        Alert.alert('PQR', 'Solicitud de PQR enviada exitosamente');
+        setIsSubmitted(true);
+        dispatch({ type: 'RESET_FORM' });
     };
 
     return (
@@ -38,20 +42,20 @@ const HelpAndSupportScreen = () => {
                 <Text style={helpAndSoportStyles.label}>Solicitud a enviar:</Text>
                 <View style={helpAndSoportStyles.requestTypeContainer}>
                     <Pressable
-                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Queja' && helpAndSoportStyles.selectedButton]}
-                        onPress={() => setRequestType('Queja')}
+                        style={[helpAndSoportStyles.requestTypeButton, state.requestType === 'Queja' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => dispatch({ type: 'SET_REQUEST_TYPE', payload: 'Queja' })}
                     >
                         <Text style={helpAndSoportStyles.buttonText}>Queja</Text>
                     </Pressable>
                     <Pressable
-                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Peticion' && helpAndSoportStyles.selectedButton]}
-                        onPress={() => setRequestType('Peticion')}
+                        style={[helpAndSoportStyles.requestTypeButton, state.requestType === 'Peticion' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => dispatch({ type: 'SET_REQUEST_TYPE', payload: 'Peticion' })}
                     >
                         <Text style={helpAndSoportStyles.buttonText}>Petición</Text>
                     </Pressable>
                     <Pressable
-                        style={[helpAndSoportStyles.requestTypeButton, requestType === 'Recurso' && helpAndSoportStyles.selectedButton]}
-                        onPress={() => setRequestType('Recurso')}
+                        style={[helpAndSoportStyles.requestTypeButton, state.requestType === 'Recurso' && helpAndSoportStyles.selectedButton]}
+                        onPress={() => dispatch({ type: 'SET_REQUEST_TYPE', payload: 'Recurso' })}
                     >
                         <Text style={helpAndSoportStyles.buttonText}>Recurso</Text>
                     </Pressable>
@@ -62,11 +66,11 @@ const HelpAndSupportScreen = () => {
                     style={helpAndSoportStyles.textInput}
                     multiline
                     numberOfLines={4}
-                    value={description}
+                    value={state.description}
                     onChangeText={handleDescriptionChange}
                     placeholder="Escribe tu problema aquí..."
                 />
-                {error ? <Text style={helpAndSoportStyles.errorText}>{error}</Text> : null}
+                {state.error ? <Text style={helpAndSoportStyles.errorText}>{state.error}</Text> : null}
 
                 <Pressable style={helpAndSoportStyles.submitButton} onPress={handleSubmit}>
                     <Text style={helpAndSoportStyles.submitButtonText}>Enviar</Text>
