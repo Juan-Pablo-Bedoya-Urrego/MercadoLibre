@@ -8,7 +8,6 @@ const CategoryScreen = ({ route, navigation }) => {
     const {state,dispatch}=useAppContext();
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         const filtered = products.filter(product =>
             product.name.toLowerCase().includes(state.searchQuery.toLowerCase())
