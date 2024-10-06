@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TextInput, Button, Alert, Pressable } from 'react-native';
+import React, { useState, useEffect, useReducer } from 'react';
+import { View, Text, Image, TextInput, Alert, Pressable } from 'react-native';
 import productDetailStyles from '../styles/productDetailStyles';
 import globalStyles from '../styles/globlaStyles';
+import { useAppContext } from '../Context/context';
+
 
 const ProductDetail = ({ route }) => {
     const { product } = route.params;
-    const [rating, setRating] = useState(0);
-    const [ratingSubmitted, setRatingSubmitted] = useState(false);
-    const [comment, setComment] = useState('');
+    const { state, dispatch } = useAppContext();
+    const [question, setQuestion] = useState('');
+
+    useEffect(() => {
+        dispatch({ type: 'SET_RATING', payload: 0 });
+        dispatch({ type: 'SET_COMMENT', payload: '' });
+    }, []);
 
     const handleStarPress = (star) => {
-        setRating(star);
-        if (star > 0 && comment.trim() !== '') {
-            setRatingSubmitted(true);
-            Alert.alert('Haz evaluado', 'Haz evaluado el producto con: ' + String(star) + ' estrellas');
-            setComment('');
+        if (star > 0 && state.comment.trim() !== '') {
+            dispatch({ type: 'SET_RATING', payload: star });
+            dispatch({ type: 'SUBMIT_RATING' });
+            Alert.alert('Haz evaluado', `Haz evaluado el producto con: ${star} estrellas`);
         } else {
             Alert.alert('Advertencia', 'Primero se debe comentar para poder evaluar el producto');
         }
     };
 
     const handleCommentSubmit = () => {
-        if (setRatingSubmitted && comment.trim() !== '') {
-            Alert.alert('Exito', 'Comentario agregado con exito');
+        if (state.comment.trim() !== '') {
+            Alert.alert('Éxito', 'Comentario agregado con éxito');
+            dispatch({ type: 'SUBMIT_RATING' });
         } else {
             Alert.alert('Error', 'Debes comentar antes de enviar el comentario');
         }
     };
+
+    const handleQuestionSubmit = () => {
+        if (question.trim() !== '') {
+            Alert.alert('Éxito', 'Pregunta enviada: ' + question);
+            setQuestion('');
+        } else {
+            Alert.alert('Error', 'Por favor, ingresa una pregunta antes de enviar.');
+        }
+    };
+
     return (
         <View style={productDetailStyles.container}>
             <Image
@@ -42,10 +58,12 @@ const ProductDetail = ({ route }) => {
             <TextInput
                 style={productDetailStyles.input}
                 placeholder="Haz una pregunta..."
+                value={question}
+                onChangeText={setQuestion}
                 maxLength={100}
             />
-            <Pressable style={productDetailStyles.mainButon} onPress={() => Alert.alert('Exito','Pregunta enviada')}>
-                <Text style={productDetailStyles.mainButtonText}>Enviar comentario</Text>
+            <Pressable style={productDetailStyles.mainButon} onPress={handleQuestionSubmit}>
+                <Text style={productDetailStyles.mainButtonText}>Enviar pregunta</Text>
             </Pressable>
 
             <Text style={productDetailStyles.calificacion}>Calificación:</Text>
@@ -70,8 +88,8 @@ const ProductDetail = ({ route }) => {
                 <TextInput
                     style={productDetailStyles.input}
                     placeholder="Escribe tu comentario..."
-                    value={comment}
-                    onChangeText={setComment}
+                    value={state.comment}
+                    onChangeText={(text) => dispatch({ type: 'SET_COMMENT', payload: text })}
                     maxLength={200}
                 />
                 <Pressable style={globalStyles.mainButon} onPress={handleCommentSubmit}>
