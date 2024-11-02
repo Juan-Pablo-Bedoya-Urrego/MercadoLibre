@@ -1,10 +1,12 @@
 import React, { useReducer, useState } from "react";
-import { View, Text, TextInput, Alert, Pressable } from "react-native";
+import { View, Text, TextInput, Alert, Pressable, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import globalStyles from "../styles/globlaStyles";
 import registerStyles from "../styles/registerStyles";
 import DatePicker from "react-native-date-picker";
 import { Picker } from "@react-native-picker/picker";
 import { useAppContext } from "../Context/context";
+import { db } from '../firebase/firebaseConfig';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const RegisterScreen = ({ navigation }) => {
     const { state, dispatch } = useAppContext();
@@ -93,7 +95,7 @@ const RegisterScreen = ({ navigation }) => {
         return age >= 18 && age <= 50;
     };
 
-    const handleRegister = () => {
+    const handleRegister = async () => {
         if (!validateUser(state.user)) {
             Alert.alert('Error', 'El usuario debe tener como máximo 10 caracteres');
             return;
@@ -114,85 +116,121 @@ const RegisterScreen = ({ navigation }) => {
             return;
         }
 
-        Alert.alert('Éxito', 'Registro completado correctamente.');
-        navigation.navigate('Login');
+        try {
+            await addDoc(collection(db, 'usuarios'), {
+                user: state.user,
+                password: state.password,
+                email: state.email,
+                dateBirth: state.dateBirth,
+                address: state.address,
+                country: state.country,
+                department: state.department,
+                city: state.city,
+                name: state.name,
+                lastName: state.lastName
+            });
+
+            Alert.alert('Éxito', 'Registro completado correctamente.');
+            navigation.navigate('Login');
+        } catch (error) {
+            Alert.alert('Error', 'Error al registrar los datos: ' + error.message);
+        }
     };
 
     return (
-        <View style={globalStyles.container}>
-            <Text style={globalStyles.tittleMain}>Registro</Text>
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+                <View style={globalStyles.container}>
+                    <Text style={globalStyles.tittleMain}>Registro</Text>
 
-            <Text style={registerStyles.label}>Usuario</Text>
-            <TextInput
-                style={registerStyles.input}
-                placeholder="Ingrese su usuario"
-                placeholderTextColor={registerStyles.placeholder.color}
-                value={state.user}
-                onChangeText={text => dispatch({ type: 'SET_USER', payload: text })}
-            />
+                    <Text style={registerStyles.label}>Nombre</Text>
+                    <TextInput
+                        style={registerStyles.input}
+                        placeholder="Ingrese su nombre"
+                        value={state.name}
+                        onChangeText={text => dispatch({ type: 'SET_NAME', payload: text })}
+                    />
 
-            <Text style={registerStyles.label}>Contraseña</Text>
-            <View style={registerStyles.inputContainer}>
-                <TextInput
-                    style={registerStyles.input}
-                    placeholder="Ingrese su contraseña"
-                    placeholderTextColor={registerStyles.placeholder.color}
-                    value={state.password}
-                    onChangeText={text => dispatch({ type: 'SET_PASSWORD', payload: text })}
-                    secureTextEntry
-                />
-            </View>
+                    <Text style={registerStyles.label}>Apellido</Text>
+                    <TextInput
+                        style={registerStyles.input}
+                        placeholder="Ingrese su apellido"
+                        value={state.lastName} 
+                        onChangeText={text => dispatch({ type: 'SET_LASTNAME', payload: text })} 
+                    />
 
-            <Text style={registerStyles.label}>Correo</Text>
-            <View style={registerStyles.inputContainer}>
-                <TextInput
-                    style={registerStyles.input}
-                    placeholder="Ingrese su correo"
-                    placeholderTextColor={registerStyles.placeholder.color}
-                    value={state.email}
-                    onChangeText={text => dispatch({ type: 'SET_EMAIL', payload: text })}
-                />
-            </View>
+                    <Text style={registerStyles.label}>Usuario</Text>
+                    <TextInput
+                        style={registerStyles.input}
+                        placeholder="Ingrese su usuario"
+                        value={state.user}
+                        onChangeText={text => dispatch({ type: 'SET_USER', payload: text })}
+                    />
 
-            <Text style={registerStyles.label}>Fecha de nacimiento</Text>
-            <Pressable onPress={() => setSelectionDate(true)}>
-                <Text style={registerStyles.input}>Seleccionar Fecha</Text>
-            </Pressable>
-            <Text style={registerStyles.label}>
-                Fecha seleccionada: {state.dateBirth ? state.dateBirth.toLocaleDateString() : 'No seleccionada'}
-            </Text>
+                    <Text style={registerStyles.label}>Contraseña</Text>
+                    <View style={registerStyles.inputContainer}>
+                        <TextInput
+                            style={registerStyles.input}
+                            placeholder="Ingrese su contraseña"
+                            value={state.password}
+                            onChangeText={text => dispatch({ type: 'SET_PASSWORD', payload: text })}
+                            secureTextEntry
+                        />
+                    </View>
 
-            <Text style={registerStyles.label}>Dirección</Text>
-            <View style={registerStyles.inputContainer}>
-                <TextInput
-                    style={registerStyles.input}
-                    placeholder="Ingrese su dirección"
-                    placeholderTextColor={registerStyles.placeholder.color}
-                    value={state.address}
-                    onChangeText={text => dispatch({ type: 'SET_ADDRESS', payload: text })}
-                />
-            </View>
+                    <Text style={registerStyles.label}>Correo</Text>
+                    <View style={registerStyles.inputContainer}>
+                        <TextInput
+                            style={registerStyles.input}
+                            placeholder="Ingrese su correo"
+                            value={state.email}
+                            onChangeText={text => dispatch({ type: 'SET_EMAIL', payload: text })}
+                        />
+                    </View>
 
-            <DatePicker
-                modal
-                open={openSelectionDate}
-                date={state.dateBirth || new Date()} // Usa la fecha actual si state.dateBirth es undefined
-                mode="date"
-                onConfirm={(date) => {
-                    setSelectionDate(false);
-                    dispatch({ type: 'SET_DATE_BIRTH', payload: date });
-                }}
-                onCancel={() => {
-                    setSelectionDate(false);
-                }}
-            />
+                    <Text style={registerStyles.label}>Fecha de nacimiento</Text>
+                    <Pressable onPress={() => setSelectionDate(true)}>
+                        <Text style={registerStyles.input}>Seleccionar Fecha</Text>
+                    </Pressable>
+                    <Text style={registerStyles.label}>
+                        Fecha seleccionada: {state.dateBirth ? new Date(state.dateBirth).toLocaleDateString() : 'No seleccionada'}
+                    </Text>
 
-            {renderPickers()}
+                    <Text style={registerStyles.label}>Dirección</Text>
+                    <View style={registerStyles.inputContainer}>
+                        <TextInput
+                            style={registerStyles.input}
+                            placeholder="Ingrese su dirección"
+                            value={state.address}
+                            onChangeText={text => dispatch({ type: 'SET_ADDRESS', payload: text })}
+                        />
+                    </View>
 
-            <Pressable style={globalStyles.mainButon} onPress={handleRegister}>
-                <Text style={globalStyles.mainButtonText}>Registrarse</Text>
-            </Pressable>
-        </View>
+                    <DatePicker
+                        modal
+                        open={openSelectionDate}
+                        date={state.dateBirth instanceof Date ? state.dateBirth : new Date()}
+                        mode="date"
+                        onConfirm={(date) => {
+                            setSelectionDate(false);
+                            dispatch({ type: 'SET_DATE_BIRTH', payload: date });
+                        }}
+                        onCancel={() => {
+                            setSelectionDate(false);
+                        }}
+                    />
+
+                    {renderPickers()}
+
+                    <Pressable style={globalStyles.mainButon} onPress={handleRegister}>
+                        <Text style={globalStyles.mainButtonText}>Registrarse</Text>
+                    </Pressable>
+                </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 };
 

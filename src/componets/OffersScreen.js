@@ -5,7 +5,7 @@ import { useAppContext } from '../Context/context';
 
 const OffersScreen = ({ navigation }) => {
     const { state, dispatch } = useAppContext();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Declarar loading aquí
 
     const fetchOffers = () => {
         const offersList = [
@@ -27,24 +27,39 @@ const OffersScreen = ({ navigation }) => {
         navigation.navigate('ProductDetail', { offer });
     };
 
-    const renderOffer = ({ item }) => (
-        <Pressable style={offersStyles.productContainer} onPress={() => handleOfferPress(item)}>
-            <Image style={offersStyles.productImage} source={item.image} resizeMede="contain" />
-            <View style={offersStyles.productDetails}>
-                <Text style={offersStyles.itemText}>{item.title}</Text>
-                <Text style={offersStyles.itemDescription} numberOfLines={2} ellipsizeMode='tail'>{item.description}</Text>
-                <Text style={offersStyles.itemLetters}>Valor Original: {item.worth}</Text>
-                <Text style={offersStyles.itemLetters}>Descuento: {item.discount}</Text>
-                <Text style={offersStyles.itemLetters}>Valor con Descuento: {item.totalValue}</Text>
-            </View>
-        </Pressable>
-    );
+    const renderOffer = ({ item }) => {
+        if (!item) {
+            return null; // Evitar errores si item es undefined
+        }
 
+        return (
+            <Pressable style={offersStyles.productContainer} onPress={() => handleOfferPress(item)}>
+                <Image style={offersStyles.productImage} source={item.image} resizeMode="contain" />
+                <View style={offersStyles.productDetails}>
+                    <Text style={offersStyles.itemText}>{item.title}</Text>
+                    <Text style={offersStyles.itemDescription} numberOfLines={2} ellipsizeMode='tail'>{item.description}</Text>
+                    <Text style={offersStyles.itemLetters}>Valor Original: {item.worth}</Text>
+                    <Text style={offersStyles.itemLetters}>Descuento: {item.discount}</Text>
+                    <Text style={offersStyles.itemLetters}>Valor con Descuento: {item.totalValue}</Text>
+                </View>
+            </Pressable>
+        );
+    };
+
+    // Manejar el estado de carga
     if (loading) {
         return (
             <View style={offersStyles.loadingContainer}>
                 <ActivityIndicator size="large" color="#0000ff" />
                 <Text>Cargando ofertas...</Text>
+            </View>
+        );
+    }
+
+    if (!state.productList || state.productList.length === 0) {
+        return (
+            <View style={offersStyles.container}>
+                <Text>No hay ofertas disponibles.</Text>
             </View>
         );
     }

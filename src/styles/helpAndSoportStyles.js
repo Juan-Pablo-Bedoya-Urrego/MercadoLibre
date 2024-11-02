@@ -34,7 +34,7 @@ const helpAndSoportStyles = StyleSheet.create({
     label: {
         fontSize: 16,
         fontWeight: '600',
-        color: '#555',
+        color: 'black',
         marginBottom: 8,
     },
     requestTypeContainer: {
@@ -63,7 +63,8 @@ const helpAndSoportStyles = StyleSheet.create({
         color: '#FFF',
     },
     textInput: {
-        backgroundColor: '#FFF',
+        backgroundColor: 'white',
+        color: 'black',
         borderColor: '#CCC',
         borderWidth: 1,
         borderRadius: 8,

@@ -96,6 +96,9 @@ const HomeStyles = StyleSheet.create({
     footerSpacing: {
         height: 60,
     },
+    contentContainerStyle:{
+        paddingBottom: 100
+    },
     pressable: {
         padding: 10,
         borderRadius: 4,
@@ -109,6 +112,32 @@ const HomeStyles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         textAlign: 'center',
+    },
+    cartButton: {
+        position: 'absolute',
+        top: 58,
+        right: 1,
+        backgroundColor: '#f8f8f8',
+        padding: 8,
+        borderRadius: 16,
+        elevation: 2,
+    },
+    cartButtonText: {
+        fontSize: 20,
+        color: '#333',
+    },
+    favoriteButton: {
+        position: 'absolute',
+        top: 58,
+        right: 50,
+        backgroundColor: '#f8f8f8',
+        padding: 8,
+        borderRadius: 16,
+        elevation: 2,
+    },
+    favoriteButtonText: {
+        fontSize: 20,
+        color: '#333',
     },
 });
 

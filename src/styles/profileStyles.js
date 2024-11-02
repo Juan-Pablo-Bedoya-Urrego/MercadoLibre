@@ -23,6 +23,8 @@ const profileStyles = StyleSheet.create({
         fontSize: 16,
         color: '#666',
         marginBottom: 20,
+        textAlign: 'center',  
+        paddingHorizontal: 20,
     },
     imageContainer: {
         width: 100,
@@ -57,7 +59,29 @@ const profileStyles = StyleSheet.create({
         color: '#000',
         borderColor: '#000',
         borderWidth: 1,
-    }
+    },
+    noUserContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    noUserImage: {
+        width: 80,
+        height: 80,
+        marginBottom: 20,
+        tintColor: '#00B8EB',
+    },
+    noUserButton: {
+        backgroundColor: '#00B8EB',
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        marginTop: 20,
+        borderRadius: 10,
+    },
+    noUserButtonText: {
+        color: '#FFF',
+        fontSize: 16,
+    },
 });
 
 export default profileStyles;

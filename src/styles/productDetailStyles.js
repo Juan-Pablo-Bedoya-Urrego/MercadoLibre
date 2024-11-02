@@ -31,16 +31,6 @@ const productDetailStyles = StyleSheet.create({
         marginVertical: 5,
         color: '#000'
     },
-    caracteristicas: {
-        fontSize: 14,
-        marginVertical: 5,
-        color: '#000'
-    },
-    medioPago: {
-        fontSize: 14,
-        marginVertical: 5,
-        color: '#000'
-    },
     input: {
         borderColor: '#ddd',
         borderWidth: 1,
@@ -60,11 +50,9 @@ const productDetailStyles = StyleSheet.create({
     },
     starPressable: {
         marginHorizontal: 5,
-        borderRadius: 5,
     },
     star: {
         fontSize: 30,
-        color: '#FFD700',
     },
     commentSection: {
         marginTop: 10,

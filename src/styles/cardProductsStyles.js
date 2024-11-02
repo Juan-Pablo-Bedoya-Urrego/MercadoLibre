@@ -39,7 +39,7 @@ const cardProductsStyles = StyleSheet.create({
         fontSize: 17,
         marginBottom: 8,
         color: 'black',
-        paddingTop: 200,
+        paddingTop: 100,
     },
     labelTotalValue:{
         color: '#2B4BFC'
@@ -76,7 +76,7 @@ const cardProductsStyles = StyleSheet.create({
         borderRadius: 5,            
         alignItems: 'center',       
         justifyContent: 'center',   
-        marginLeft: 70,             
+        marginLeft: 95,             
     },
     icon: {
         width: 20,
