@@ -16,7 +16,7 @@ const OffersScreen = ({ navigation }) => {
         ];
 
         dispatch({ type: 'SET_PRODUCTS', payload: offersList });
-        setLoading(false);
+        setLoading(false); 
     };
 
     useEffect(() => {
@@ -24,12 +24,12 @@ const OffersScreen = ({ navigation }) => {
     }, []);
 
     const handleOfferPress = (offer) => {
-        navigation.navigate('ProductDetail', { offer });
+        navigation.navigate('ProductDetail', { offer});
     };
 
     const renderOffer = ({ item }) => (
         <Pressable style={offersStyles.productContainer} onPress={() => handleOfferPress(item)}>
-            <Image style={offersStyles.productImage} source={item.image} resizeMede="contain" />
+            <Image style={offersStyles.productImage} source={item.image} resizeMede ="contain"/>
             <View style={offersStyles.productDetails}>
                 <Text style={offersStyles.itemText}>{item.title}</Text>
                 <Text style={offersStyles.itemDescription} numberOfLines={2} ellipsizeMode='tail'>{item.description}</Text>

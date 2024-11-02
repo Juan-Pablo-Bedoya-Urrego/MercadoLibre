@@ -86,8 +86,8 @@ const categoryStyles = StyleSheet.create({
     pressable: {
         padding: 10,
         borderRadius: 4,
-        marginHorizontal: 5, // Espaciado entre los botones
-        borderWidth: 1, // Ancho del borde
+        marginHorizontal: 5, 
+        borderWidth: 1,  
         borderColor: '#fff',
         width: 100,
         height: 45
@@ -96,6 +96,32 @@ const categoryStyles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         textAlign: 'center',
+    },
+    cartButton: {
+        position: 'absolute',
+        top: 70,
+        right: 10,
+        backgroundColor: '#f8f8f8',
+        padding: 8,
+        borderRadius: 16,
+        elevation: 2,
+    },
+    cartButtonText: {
+        fontSize: 20,
+        color: '#333',
+    },
+    favoriteButton: {
+        position: 'absolute',
+        top: 70,
+        right: 60,
+        backgroundColor: '#f8f8f8',
+        padding: 8,
+        borderRadius: 16,
+        elevation: 2,
+    },
+    favoriteButtonText: {
+        fontSize: 20,
+        color: '#333',
     },
 });
 

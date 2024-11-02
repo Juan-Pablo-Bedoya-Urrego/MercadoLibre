@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, Pressable } from 'react-native';
+import { View, Text, FlatList, Image, Pressable, Alert } from 'react-native';
 import myPurchasesStyles from '../styles/myPurchasesStyles';
 import { useAppContext } from '../Context/context';
+import { db } from '../firebase/firebaseConfig';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { LogBox } from 'react-native';
 
 const MyFavoritesScreen = ({ navigation }) => {
 
@@ -10,33 +13,43 @@ const MyFavoritesScreen = ({ navigation }) => {
         navigation.navigate('ProductDetail', { product });
     };
 
+    const loadFavorite = async () => {
+        try {
+            const purchasesQuery = query(collection(db, 'favorites'), where("userId", "==", state.user));
+            const purchasesSnapshot = await getDocs(purchasesQuery);
+
+            const purchasesData = purchasesSnapshot.docs.map(doc => {
+                const data = doc.data();
+                return {
+                    id: doc.id, 
+                    name: data.name,
+                    image: data.image,
+                    description: data.description,
+                    valueProduct: data.valueProduct,
+                };
+            });
+
+            dispatch({ type: 'SET_PRODUCTS', payload: purchasesData });
+        } catch (error) {
+            Alert.alert('Error', 'Error al cargar los favoritos: ' + error.message);
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        loadFavorite();
+    }, []);
+
     const renderProduct = ({ item }) => (
         <Pressable style={myPurchasesStyles.productContainer} onPress={() => handleProductPress(item)}>
-            <Image source={item.image} style={myPurchasesStyles.productImage} resizeMode="contain" />
+            <Image source={{ uri: item.image }} style={myPurchasesStyles.productImage} resizeMode="contain" />
             <View style={myPurchasesStyles.productDetails}>
-                <Text style={myPurchasesStyles.productName}>{item.title}</Text>
+                <Text style={myPurchasesStyles.productName}>{item.name}</Text>
                 <Text style={myPurchasesStyles.productDescription}>{item.description}</Text>
-                <Text style={myPurchasesStyles.productValue}>{item.status}</Text>
+                <Text style={myPurchasesStyles.productValue}>{item.valueProduct}</Text>
             </View>
         </Pressable>
     );
-
-    // useEffect para cargar los productos
-    useEffect(() => {
-        const fetchProducts = () => {
-            // Simulando una llamada a una API
-            const products = [
-                { id: '1', title: 'Apple iPhone 15 Pro Max', description: 'Un sistema de cámaras avanzado con sensores.', status: 'Disponible', image: require('../img/iPhone.jpg') },
-                { id: '2', title: 'Canon EOS R5', description: 'Es una cámara sin espejo de alto rendimiento.', status: 'No disponible', image: require('../img/Camara.jpg') },
-                { id: '3', title: 'Sony WH-1000XM5', description: 'Son auriculares inalámbricos de gama alta.', status: 'Disponible', image: require('../img/SonyWH-1000XM5.jpg') },
-            ];
-
-            // Despachar la acción para establecer la lista de productos
-            dispatch({ type: 'SET_PRODUCTS', payload: products });
-        };
-
-        fetchProducts();
-    }, []); // El array vacío significa que solo se ejecuta una vez al montar el componente
 
     return (
         <View style={myPurchasesStyles.container}>
